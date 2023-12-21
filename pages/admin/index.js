@@ -1,8 +1,37 @@
 import styles from "../../styles/loginPage.module.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { toast } from "sonner";
+import { useRouter } from "next/router";
 const Login = () => {
-  async function handleLogin() {}
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const router = useRouter();
+  async function handleLogin(e) {
+    e.preventDefault();
+    if (email != "" && password != "") {
+      try {
+        const result = await axios.post(
+          "http://localhost:5000/user/api/findUser",
+          { email: email, password: password }
+        );
+        console.log("data", result);
+        if (result.data.data.length > 0) {
+          toast.success("Login Successful");
+          setemail("");
+          setpassword("");
+        } else {
+          toast.error("Wrong username or password");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      toast.warning("Both email and password are required to login.");
+    }
+  }
   return (
     <>
       <div className={styles.mainSection}>
@@ -10,7 +39,13 @@ const Login = () => {
           <h3 className={styles.panelHeading}>HARBINGER ADMIN PANEL</h3>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" required />
+            <Form.Control
+              type="email"
+              value={email}
+              placeholder="Enter email"
+              required
+              onChange={(e) => setemail(e?.target?.value)}
+            />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
@@ -18,7 +53,13 @@ const Login = () => {
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" required />
+            <Form.Control
+              type="password"
+              value={password}
+              placeholder="Password"
+              required
+              onChange={(e) => setpassword(e?.target?.value)}
+            />
           </Form.Group>
 
           <Button variant="secondary" type="submit">
