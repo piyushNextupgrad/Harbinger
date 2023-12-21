@@ -2,7 +2,7 @@ const Header = () => {
   return (
     <>
       <>
-        <div className="navbar">
+        <div className="navbarr">
           <div className="hd1">
             <img src="/logo.png" />
             <a href="#">
@@ -10,11 +10,7 @@ const Header = () => {
             </a>
           </div>
           <div className="hd2">
-            <a
-              href="javascript:void(0);"
-              className="icon"
-              onclick="myFunction()"
-            >
+            <a href="javascript:void(0);" className="icon">
               <img src="/open-menu.png" alt="" />
             </a>
             <ul id="myLinks">
@@ -52,11 +48,6 @@ const Header = () => {
           </div>
           <div className="clear" />
         </div>
-        <link rel="stylesheet" href="../styles/owl.carousel.min.css" />
-        <link rel="stylesheet" href="../styles/owl.theme.default.min.css" />
-
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/owl.carousel.js"></script>
       </>
     </>
   );
