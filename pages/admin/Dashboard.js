@@ -8,15 +8,16 @@ import { BiSolidTrash } from "react-icons/bi";
 export default function Home() {
   return (
     <>
-      <div className={styles.harb}>
+      <div className={styles.mainSection}>
         <section className={styles.main}>
           <div className={styles.hdr}>
-            <h2>KEY Header & Button Links</h2>
+            <img src={"/images/logo.png"} />
+            <h2>Section 1 - Key Slider</h2>
           </div>
           <div className={styles.container}>
             <div>
-              <Table responsive striped bordered>
-                <thead>
+              <Table responsive striped bordered hover className={styles.tbl}>
+                <thead className={styles.tbhead}>
                   <tr>
                     <th>S.No</th>
                     <th>Picture Uploaded</th>
@@ -25,11 +26,11 @@ export default function Home() {
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className={styles.tbb}>
                   <tr>
                     <td>1.</td>
                     <td>
-                      <img src="/user.png" />
+                      <img src={"/images/user.png"} />
                     </td>
                     <td>Key 1</td>
                     <td>
@@ -66,12 +67,13 @@ export default function Home() {
         </section>
         <section className={styles.main}>
           <div className={styles.hdr}>
-            <h2>Articles Header & Button Links</h2>
+            <img src={"/images/logo.png"} />
+            <h2>Section 2 - Posts and Articles</h2>
           </div>
           <div className={styles.container}>
             <div>
-              <Table responsive striped bordered hover>
-                <thead>
+              <Table responsive striped bordered hover className={styles.tbl}>
+                <thead className={styles.tbhead}>
                   <tr>
                     <th>Author</th>
                     <th>Picture Uploaded</th>
@@ -81,11 +83,11 @@ export default function Home() {
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className={styles.tbb}>
                   <tr>
                     <td>Nikhil</td>
                     <td>
-                      <img src="/user.png" />
+                      <img src={"/images/user.png"} />
                     </td>
                     <td>Article 1</td>
                     <td>
@@ -149,7 +151,8 @@ export default function Home() {
         </section>
         <section className={styles.main}>
           <div className={styles.hdr}>
-            <h2>Shiboshis Text & Button Links</h2>
+            <img src={"/images/logo.png"} />
+            <h2>Section 3</h2>
           </div>
           <div className={styles.container}>
             <Form>
@@ -197,7 +200,8 @@ export default function Home() {
         </section>
         <section className={styles.main}>
           <div className={styles.hdr}>
-            <h2>Community Text & Button Links</h2>
+            <img src={"/images/logo.png"} />
+            <h2>Section 4</h2>
           </div>
           <div className={styles.container}>
             <Form>

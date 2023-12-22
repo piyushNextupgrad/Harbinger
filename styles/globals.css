@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;300;500&display=swap");
 
+:root {
+  --col1: white;
+  --col2: #fa6102;
+  --col3: #dfdfdf;
+  --col4: #022550;
+  --col5: #d1dae8;
+  --col6: #f2f2f2;
+  --col7: #dddddd;
+  --col8: red;
+  --col9: #007bff;
+  --col10: #6c757d;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

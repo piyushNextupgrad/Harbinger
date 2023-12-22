@@ -11,9 +11,9 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      {router?.asPath == "/admin" ? null : <Header />}
+      {router?.asPath.includes("admin") ? null : <Header />}
       {children}
-      {router?.asPath == "/admin" ? null : <Footer />}
+      {router?.asPath.includes("admin") ? null : <Footer />}
     </>
   );
 };

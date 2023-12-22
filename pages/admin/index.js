@@ -9,6 +9,12 @@ const Login = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const router = useRouter();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      router.push("/admin/Dashboard");
+    }
+  }, []);
   async function handleLogin(e) {
     e.preventDefault();
     if (email != "" && password != "") {
@@ -22,6 +28,11 @@ const Login = () => {
           toast.success("Login Successful");
           setemail("");
           setpassword("");
+          const token = result?.data?.token;
+          const user = JSON.stringify(result?.data?.data[0]);
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", user);
+          router.push("/admin/Dashboard");
         } else {
           toast.error("Wrong username or password");
         }
