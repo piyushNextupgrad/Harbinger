@@ -2,6 +2,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Header2 from "./Header2";
 const Layout = ({ children }) => {
   const router = useRouter();
 
@@ -12,6 +13,7 @@ const Layout = ({ children }) => {
   return (
     <>
       {router?.asPath.includes("admin") ? null : <Header />}
+      {router?.asPath.includes("Dashboard") ? <Header2 /> : null}
       {children}
       {router?.asPath.includes("admin") ? null : <Footer />}
     </>

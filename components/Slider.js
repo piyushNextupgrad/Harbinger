@@ -50,7 +50,7 @@ const Sliderr = ({ sliderContent }) => {
                   </div>
                   <div className="crd">
                     <h2>{item?.keyName}</h2>
-                    <a href="#" target="_blank">
+                    <a className="sliderLink" href={item?.link} target="_blank">
                       BUY {item?.keyName}
                     </a>
                   </div>
