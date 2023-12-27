@@ -61,7 +61,10 @@ export default function Home() {
             ? post.map((item, index) => (
                 <div key={index} className="sc2">
                   <div className="sec2-2">
-                    <img src="/key1-1.png" alt="img" />
+                    <img
+                      src={item.postMedia ? item.postMedia : "/key1-1.png"}
+                      alt="img"
+                    />
                   </div>
                   <div className="sec2-1">
                     <div className="sec2-1-1">
