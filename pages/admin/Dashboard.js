@@ -35,6 +35,22 @@ export default function Home() {
   const [readMoreUrlSec2, setReadMoreUrl] = useState("");
   const [postImage, setPostImage] = useState(null);
   //.......
+
+  //states for section 3 put API
+  const [beforeHeadingText, setBeforeHeadingText] = useState("");
+  const [headingText, setHeadingText] = useState("");
+  const [paragraph1, setParagraph1] = useState("");
+  const [paragraph2, setParagraph2] = useState("");
+  const [button1Url, setButton1Url] = useState("");
+  const [button2Url, setButton2Url] = useState("");
+  //......
+
+  //states for section 4 put API
+  const [beforeHeadingText2, setBeforeHeadingText2] = useState("");
+  const [headingText2, setHeadingText2] = useState("");
+  const [description2, setDescription2] = useState("");
+  const [buttonUrl2, setButtonUrl2] = useState("");
+  //..............................
   useEffect(() => {
     getData();
   }, []);
@@ -64,7 +80,7 @@ export default function Home() {
     reader.readAsDataURL(files);
   };
 
-  //Function to get the data from API on Page Load
+  //Function for GET API
   async function getData() {
     try {
       setisSubmitingLoader(true);
@@ -76,17 +92,29 @@ export default function Home() {
       );
 
       setpost(articles?.data?.data);
-      console.log(articles?.data?.data);
+      // console.log(articles?.data?.data);
       const section3 = await axios.get(
         "http://localhost:5000/section3/api/getSection3"
       );
 
       setsection3(section3?.data?.data);
+      // console.log("section 3", section3?.data?.data);
+      setBeforeHeadingText(section3?.data?.data[0].sectionName);
+      setHeadingText(section3?.data?.data[0].sectionHeading);
+      setParagraph1(section3?.data?.data[0].sectionContent1);
+      setParagraph2(section3?.data?.data[0].sectioncontent2);
+      setButton1Url(section3?.data?.data[0].link1);
+      setButton2Url(section3?.data?.data[0].link2);
+
       const section4 = await axios.get(
         "http://localhost:5000/section4/api/getSection4"
       );
       console.log("sec4", section4);
       setsection4(section4?.data?.data);
+      setBeforeHeadingText2(section4?.data?.data[0].sectionName);
+      setHeadingText2(section4?.data?.data[0].sectionHeading);
+      setDescription2(section4?.data?.data[0].sectionContent1);
+      setButtonUrl2(section4?.data?.data[0].link1);
       setisSubmitingLoader(false);
     } catch (err) {
       setisSubmitingLoader(false);
@@ -105,7 +133,7 @@ export default function Home() {
         "http://localhost:5000/section1/delData",
         formData
       );
-      console.log(result);
+      // console.log(result);
       if (result.data.success) {
         setisSubmitingLoader(false);
         const filteredSlider = sliderContent.filter((item) => item._id != id);
@@ -140,8 +168,8 @@ export default function Home() {
   async function sendData(event, section) {
     event.preventDefault();
 
-    console.log("function hit");
-    console.log(section);
+    // console.log("function hit");
+    // console.log(section);
     if (section == "slider") {
       try {
         setisSubmitingLoader(true);
@@ -184,7 +212,7 @@ export default function Home() {
           "http://localhost:5000/articles/api/postArticle",
           formData
         );
-        console.log("==>", resp);
+        // console.log("==>", resp);
         if (resp.data.success) {
           setisSubmitingLoader(false);
           getData();
@@ -204,6 +232,104 @@ export default function Home() {
         }
       } catch (err) {
         toast.error(err);
+      }
+    } else if (section == "section4") {
+      try {
+        setisSubmitingLoader(true);
+        const formData = new FormData();
+        formData.append("sectionName", beforeHeadingText);
+        formData.append("sectionHeading", headingText);
+        formData.append("sectionContent1", paragraph1);
+        formData.append("sectioncontent2", paragraph2);
+        formData.append("link1", button1Url);
+        formData.append("link2", button2Url);
+        const resp = await axios.post(
+          "http://localhost:5000/section3/api/postSection3",
+          formData
+        );
+        // console.log("==>", resp);
+        if (resp.data.success) {
+          setisSubmitingLoader(false);
+          getData();
+          toast.success("Record Saved Successfuly");
+
+          setBeforeHeadingText("");
+          setHeadingText("");
+          setParagraph1("");
+          setParagraph2("");
+          setButton1Url("");
+          setButton2Url("");
+        } else {
+          setisSubmitingLoader(false);
+          toast.success("Record Not Saved");
+        }
+      } catch (err) {
+        toast.error(err);
+      }
+    }
+  }
+
+  //function for UPdate API
+  async function updateData(event, sectionName, sectionID) {
+    event.preventDefault();
+    if (sectionName == "section3") {
+      try {
+        setisSubmitingLoader(true);
+        const formData = new FormData();
+        formData.append("sectionName", beforeHeadingText);
+        formData.append("sectionHeading", headingText);
+        formData.append("sectionContent1", paragraph1);
+        formData.append("sectioncontent2", paragraph2);
+        formData.append("link1", button1Url);
+        formData.append("link2", button2Url);
+        formData.append("id", sectionID);
+        const res = await axios.put(
+          "http://localhost:5000/section3/api/putSection3",
+          formData
+        );
+        console.log("res", res);
+        if (res.data.success) {
+          getData();
+          setisSubmitingLoader(false);
+
+          toast.success("Records Updated");
+        } else {
+          setisSubmitingLoader(false);
+          toast.error("Records updated failed");
+        }
+      } catch (err) {
+        setisSubmitingLoader(false);
+        console.log(err);
+      }
+    }
+    if (sectionName == "section4") {
+      try {
+        setisSubmitingLoader(true);
+        const formData = new FormData();
+        formData.append("sectionName", beforeHeadingText2);
+        formData.append("sectionHeading", headingText2);
+        formData.append("sectionContent1", description2);
+
+        formData.append("link1", buttonUrl2);
+
+        formData.append("id", sectionID);
+        const res = await axios.put(
+          "http://localhost:5000/section4/api/putSection4",
+          formData
+        );
+        console.log("res", res);
+        if (res.data.success) {
+          getData();
+          setisSubmitingLoader(false);
+
+          toast.success("Records Updated");
+        } else {
+          setisSubmitingLoader(false);
+          toast.error("Records updated failed");
+        }
+      } catch (err) {
+        setisSubmitingLoader(false);
+        console.log(err);
       }
     }
   }
@@ -266,7 +392,7 @@ export default function Home() {
                           <td>{item?.keyName}</td>
                           <td>
                             <a href={item?.link} target="_blank">
-                              {item?.link ? "View" : null}
+                              {item?.link}
                             </a>
                           </td>
                           <td>
@@ -302,7 +428,7 @@ export default function Home() {
                     />
                   </div>
                 </Form.Group>
-                <Form.Group className="mb-4" controlId="formText">
+                <Form.Group className="mb-4" controlId="formTextSection1">
                   <Form.Label>Key Name</Form.Label>
                   <Form.Control
                     className="mb-5"
@@ -313,7 +439,7 @@ export default function Home() {
                     required
                   />
                 </Form.Group>
-                <Form.Group className="mb-4" controlId="url">
+                <Form.Group className="mb-4" controlId="urlSection1">
                   <Form.Label>Link</Form.Label>
                   <Form.Control
                     className="mb-5"
@@ -388,7 +514,7 @@ export default function Home() {
             </div>
             <div className="py-5">
               <Form onSubmit={(e) => sendData(e, "postSection")}>
-                <Form.Group controlId="formFileMultiple" className="mb-2">
+                <Form.Group controlId="formFileMultipleSec2" className="mb-2">
                   <Form.Label>Upload Picture</Form.Label>
                   <div className="alignInputandPreview mb-5">
                     <Form.Control
@@ -407,7 +533,7 @@ export default function Home() {
                     />
                   </div>
                 </Form.Group>
-                <Form.Group className="mb-2" controlId="formText">
+                <Form.Group className="mb-2" controlId="formTextSec2">
                   <Form.Label>Author Name</Form.Label>
                   <Form.Control
                     className="mb-5"
@@ -418,7 +544,7 @@ export default function Home() {
                     onChange={(e) => setAuthorName(e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group className="mb-2" controlId="formText">
+                <Form.Group className="mb-2" controlId="formTextSec2">
                   <Form.Label>Article Heading</Form.Label>
                   <Form.Control
                     className="mb-5"
@@ -429,10 +555,7 @@ export default function Home() {
                     onChange={(e) => setArticleHeading(e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group
-                  className="mb-2"
-                  controlId="exampleForm.ControlTextarea1"
-                >
+                <Form.Group className="mb-2" controlId="ControlTextarea1">
                   <Form.Label>Article Content</Form.Label>
                   <br />
                   <Form.Control
@@ -444,7 +567,7 @@ export default function Home() {
                     onChange={(e) => setArticleDescription(e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group className="mb-2" controlId="url">
+                <Form.Group className="mb-2" controlId="urlSec2">
                   <Form.Label>Read More URL</Form.Label>
                   <Form.Control
                     className="mb-5"
@@ -467,42 +590,61 @@ export default function Home() {
             <h2>Section 3</h2>
           </div>
           <div className={styles.container}>
-            <Form>
-              <Form.Group className="mb-2" controlId="formText">
+            <Form onSubmit={(e) => updateData(e, "section3", section3[0]._id)}>
+              <Form.Group className="mb-4" controlId="formTextSec3">
                 <Form.Label>Before Heading Text</Form.Label>
-                <Form.Control type="text" placeholder="NFT..." />
-              </Form.Group>
-              <Form.Group className="mb-2" controlId="formText">
-                <Form.Label>Heading Text</Form.Label>
                 <Form.Control
-                  size="lg"
                   type="text"
-                  placeholder="Shiboshis..."
+                  placeholder="Heading 1"
+                  value={beforeHeadingText}
+                  onChange={(e) => setBeforeHeadingText(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group
-                className="mb-2"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label>Description</Form.Label>
+              <Form.Group className="mb-4" controlId="formTextSec3">
+                <Form.Label>Heading Text</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Heading 2"
+                  value={headingText}
+                  onChange={(e) => setHeadingText(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group className="mb-4" controlId="ControlTextarea1Sec3">
+                <Form.Label>Content 1</Form.Label>
                 <br />
                 <Form.Control
                   as="textarea"
                   rows={3}
                   placeholder="Paragraph 1"
+                  value={paragraph1}
+                  onChange={(e) => setParagraph1(e.target.value)}
                 />
                 <br />
+                <Form.Label>Content 2</Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={3}
                   placeholder="Paragraph 2"
+                  value={paragraph2}
+                  onChange={(e) => setParagraph2(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group className="mb-2" controlId="url">
+              <Form.Group className="mb-4" controlId="urlSec3">
                 <Form.Label>Button1 URL</Form.Label>
-                <Form.Control type="url" placeholder="Type URL1" />
+                <Form.Control
+                  className="mb-4"
+                  type="text"
+                  placeholder="Type URL1"
+                  value={button1Url}
+                  onChange={(e) => setButton1Url(e.target.value)}
+                />
                 <Form.Label>Button2 URL</Form.Label>
-                <Form.Control type="url" placeholder="Type URL2" />
+                <Form.Control
+                  type="text"
+                  placeholder="Type URL2"
+                  value={button2Url}
+                  onChange={(e) => setButton2Url(e.target.value)}
+                />
               </Form.Group>
               <Button variant="primary" type="submit" className={styles.fbtn}>
                 Update Site
@@ -516,35 +658,53 @@ export default function Home() {
             <h2>Section 4</h2>
           </div>
           <div className={styles.container}>
-            <Form>
-              <Form.Group className="mb-2" controlId="formText">
+            <Form onSubmit={(e) => updateData(e, "section4", section4[0]._id)}>
+              <Form.Group
+                className="mb-2"
+                controlId="formBeforeHeadingTextSec4"
+              >
                 <Form.Label>Before Heading Text</Form.Label>
-                <Form.Control type="text" placeholder="INTAKE..." />
+                <Form.Control
+                  type="text"
+                  placeholder="INTAKE..."
+                  value={beforeHeadingText2}
+                  onChange={(e) => setBeforeHeadingText2(e.target.value)}
+                />
               </Form.Group>
-              <Form.Group className="mb-2" controlId="formText">
+
+              <Form.Group className="mb-2" controlId="formHeadingTextSec4">
                 <Form.Label>Heading Text</Form.Label>
                 <Form.Control
                   size="lg"
                   type="text"
                   placeholder="Community..."
+                  value={headingText2}
+                  onChange={(e) => setHeadingText2(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group
-                className="mb-2"
-                controlId="exampleForm.ControlTextarea1"
-              >
+
+              <Form.Group className="mb-2" controlId="formDescriptionSec4">
                 <Form.Label>Description</Form.Label>
                 <br />
                 <Form.Control
                   as="textarea"
                   rows={3}
                   placeholder="Paragraph..."
+                  value={description2}
+                  onChange={(e) => setDescription2(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group className="mb-2" controlId="url">
+
+              <Form.Group className="mb-2" controlId="formButtonUrlSec4">
                 <Form.Label>Button URL</Form.Label>
-                <Form.Control type="url" placeholder="Type URL..." />
+                <Form.Control
+                  type="text"
+                  placeholder="Type URL..."
+                  value={buttonUrl2}
+                  onChange={(e) => setButtonUrl2(e.target.value)}
+                />
               </Form.Group>
+
               <Button variant="primary" type="submit" className={styles.fbtn}>
                 Update Site
               </Button>
