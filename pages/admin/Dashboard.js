@@ -84,17 +84,19 @@ export default function Home() {
   async function getData() {
     try {
       setisSubmitingLoader(true);
-      const slider = await axios.get("http://localhost:5000/section1/getData");
+      const slider = await axios.get(
+        "https://harbinger-backend.onrender.com/section1/getData"
+      );
 
       setsliderContent(slider?.data?.data);
       const articles = await axios.get(
-        "http://localhost:5000/articles/api/getArticle"
+        "https://harbinger-backend.onrender.com/articles/api/getArticle"
       );
 
       setpost(articles?.data?.data);
       // console.log(articles?.data?.data);
       const section3 = await axios.get(
-        "http://localhost:5000/section3/api/getSection3"
+        "https://harbinger-backend.onrender.com/section3/api/getSection3"
       );
 
       setsection3(section3?.data?.data);
@@ -107,7 +109,7 @@ export default function Home() {
       setButton2Url(section3?.data?.data[0].link2);
 
       const section4 = await axios.get(
-        "http://localhost:5000/section4/api/getSection4"
+        "https://harbinger-backend.onrender.com/section4/api/getSection4"
       );
       console.log("sec4", section4);
       setsection4(section4?.data?.data);
@@ -130,7 +132,7 @@ export default function Home() {
       const formData = new FormData();
       formData.append("id", id);
       const result = await axios.post(
-        "http://localhost:5000/section1/delData",
+        "https://harbinger-backend.onrender.com/section1/delData",
         formData
       );
       // console.log(result);
@@ -149,7 +151,7 @@ export default function Home() {
       formData.append("id", id);
 
       const result = await axios.post(
-        "http://localhost:5000/articles/api/delArticle",
+        "https://harbinger-backend.onrender.com/articles/api/delArticle",
         formData
       );
       // console.log(result);
@@ -178,7 +180,7 @@ export default function Home() {
         formData.append("keyName", keyName);
         formData.append("link", link);
         const resp = await axios.post(
-          "http://localhost:5000/section1/postImages",
+          "https://harbinger-backend.onrender.com/section1/postImages",
           formData
         );
         if (resp.data.success) {
@@ -209,7 +211,7 @@ export default function Home() {
         formData.append("articleMedia", postImage);
         formData.append("postLink", readMoreUrlSec2);
         const resp = await axios.post(
-          "http://localhost:5000/articles/api/postArticle",
+          "https://harbinger-backend.onrender.com/articles/api/postArticle",
           formData
         );
         // console.log("==>", resp);
@@ -244,7 +246,7 @@ export default function Home() {
         formData.append("link1", button1Url);
         formData.append("link2", button2Url);
         const resp = await axios.post(
-          "http://localhost:5000/section3/api/postSection3",
+          "https://harbinger-backend.onrender.com/section3/api/postSection3",
           formData
         );
         // console.log("==>", resp);
@@ -284,7 +286,7 @@ export default function Home() {
         formData.append("link2", button2Url);
         formData.append("id", sectionID);
         const res = await axios.put(
-          "http://localhost:5000/section3/api/putSection3",
+          "https://harbinger-backend.onrender.com/section3/api/putSection3",
           formData
         );
         console.log("res", res);
@@ -314,7 +316,7 @@ export default function Home() {
 
         formData.append("id", sectionID);
         const res = await axios.put(
-          "http://localhost:5000/section4/api/putSection4",
+          "https://harbinger-backend.onrender.com/section4/api/putSection4",
           formData
         );
         console.log("res", res);

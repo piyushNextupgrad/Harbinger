@@ -20,7 +20,7 @@ const Login = () => {
     if (email != "" && password != "") {
       try {
         const result = await axios.post(
-          "http://localhost:5000/user/api/findUser",
+          "https://harbinger-backend.onrender.com/user/api/findUser",
           { email: email, password: password }
         );
         console.log("data", result);

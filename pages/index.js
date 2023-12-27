@@ -21,21 +21,23 @@ export default function Home() {
   }, [sliderContent]);
   async function getData() {
     try {
-      const slider = await axios.get("http://localhost:5000/section1/getData");
+      const slider = await axios.get(
+        "https://harbinger-backend.onrender.com/section1/getData"
+      );
 
       setsliderContent(slider?.data?.data);
       const articles = await axios.get(
-        "http://localhost:5000/articles/api/getArticle"
+        "https://harbinger-backend.onrender.com/articles/api/getArticle"
       );
 
       setpost(articles?.data?.data);
       const section3 = await axios.get(
-        "http://localhost:5000/section3/api/getSection3"
+        "https://harbinger-backend.onrender.com/section3/api/getSection3"
       );
 
       setsection3(section3?.data?.data);
       const section4 = await axios.get(
-        "http://localhost:5000/section4/api/getSection4"
+        "https://harbinger-backend.onrender.com/section4/api/getSection4"
       );
       console.log("sec4", section4);
       setsection4(section4?.data?.data);
