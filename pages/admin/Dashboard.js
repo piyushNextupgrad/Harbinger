@@ -8,6 +8,8 @@ import { useState, useEffect, useRef } from "react";
 import { Spinner } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "sonner";
+import Modal1 from "@/components/SliderModal";
+import Modal2 from "@/components/section2Modal";
 
 export default function Home() {
   const [isSubmitingLoader, setisSubmitingLoader] = useState(false);
@@ -51,6 +53,29 @@ export default function Home() {
   const [description2, setDescription2] = useState("");
   const [buttonUrl2, setButtonUrl2] = useState("");
   //..............................
+
+  //states to toggle modal....
+  const [toggle1, settoggle1] = useState(0);
+  const [SliderItem, setSliderItem] = useState([]);
+  const [field1, setfield1] = useState("");
+  const [field2, setfield2] = useState("");
+  const [field3, setfield3] = useState("");
+  const [fieldId, setfieldID] = useState("");
+  //....
+
+  //states for second  modal
+
+  const [toggle2, settoggle2] = useState(0);
+  const [postItem, setPostItem] = useState([]);
+  const [pic, setpic] = useState("");
+  const [authName, setauthName] = useState("");
+  const [artHeading, setartHeading] = useState("");
+  const [artContent, setartContent] = useState("");
+  const [artLink, setartLink] = useState("");
+  const [postId, setPostId] = useState("");
+
+  //.........
+
   useEffect(() => {
     getData();
   }, []);
@@ -111,7 +136,7 @@ export default function Home() {
       const section4 = await axios.get(
         "https://harbinger-backend.onrender.com/section4/api/getSection4"
       );
-      console.log("sec4", section4);
+      // console.log("sec4", section4);
       setsection4(section4?.data?.data);
       setBeforeHeadingText2(section4?.data?.data[0].sectionName);
       setHeadingText2(section4?.data?.data[0].sectionHeading);
@@ -126,7 +151,7 @@ export default function Home() {
 
   //function for delete API
   async function handleDelete(id, sectionName) {
-    console.log(id);
+    // console.log(id);
     if (sectionName == "slider") {
       setisSubmitingLoader(true);
       const formData = new FormData();
@@ -263,7 +288,7 @@ export default function Home() {
           setButton2Url("");
         } else {
           setisSubmitingLoader(false);
-          toast.success("Record Not Saved");
+          toast.error("Record Not Saved");
         }
       } catch (err) {
         toast.error(err);
@@ -289,7 +314,7 @@ export default function Home() {
           "https://harbinger-backend.onrender.com/section3/api/putSection3",
           formData
         );
-        console.log("res", res);
+        // console.log("res", res);
         if (res.data.success) {
           getData();
           setisSubmitingLoader(false);
@@ -319,7 +344,7 @@ export default function Home() {
           "https://harbinger-backend.onrender.com/section4/api/putSection4",
           formData
         );
-        console.log("res", res);
+        // console.log("res", res);
         if (res.data.success) {
           getData();
           setisSubmitingLoader(false);
@@ -336,8 +361,71 @@ export default function Home() {
     }
   }
 
+  async function handleSliderUpdate(itemId) {
+    // console.log("sliderItem", itemId);
+    const filteredItem = sliderContent.filter((item) => item._id == itemId);
+    setSliderItem(filteredItem[0]);
+    setfield1(filteredItem[0]?.imagePath);
+    setfield2(filteredItem[0]?.keyName);
+    setfield3(filteredItem[0]?.link);
+    setfieldID(filteredItem[0]?._id);
+    settoggle1(1);
+  }
+  async function handlePostUpdate(itemId) {
+    // console.log("Post Item", itemId);
+    const filteredItem = post.filter((item) => item._id == itemId);
+
+    setSliderItem(filteredItem[0]);
+    setpic(filteredItem[0]?.postMedia);
+    setauthName(filteredItem[0]?.authorName);
+    setartHeading(filteredItem[0]?.postHeading);
+    setartContent(filteredItem[0]?.postContent);
+    setartLink(filteredItem[0]?.postLink);
+    setPostId(filteredItem[0]?._id);
+
+    settoggle2(1);
+  }
+
+  useEffect(() => {
+    // console.log("SliderItem", SliderItem);
+  }, [SliderItem]);
+
   return (
     <>
+      <Modal1
+        toggle1={toggle1}
+        settoggle1={settoggle1}
+        SliderItem={SliderItem}
+        setSliderItem={setSliderItem}
+        field1={field1}
+        field2={field2}
+        field3={field3}
+        fieldId={fieldId}
+        setfield1={setfield1}
+        setfield2={setfield2}
+        setfield3={setfield3}
+        getData={getData}
+        setisSubmitingLoader={setisSubmitingLoader}
+      />
+      <Modal2
+        toggle2={toggle2}
+        settoggle2={settoggle2}
+        postItem={postItem}
+        pic={pic}
+        authName={authName}
+        artHeading={artHeading}
+        artContent={artContent}
+        artLink={artLink}
+        postId={postId}
+        setPostItem={setPostItem}
+        setpic={setpic}
+        setauthName={setauthName}
+        setartHeading={setartHeading}
+        setartContent={setartContent}
+        setartLink={setartLink}
+        getData={getData}
+        setisSubmitingLoader={setisSubmitingLoader}
+      />
       <div className={styles.mainSection}>
         {isSubmitingLoader ? (
           <div className="overlay">
@@ -398,7 +486,10 @@ export default function Home() {
                             </a>
                           </td>
                           <td>
-                            <BiEdit className={styles.icon1} />
+                            <BiEdit
+                              className={styles.icon1}
+                              onClick={() => handleSliderUpdate(item?._id)}
+                            />
                             <BiSolidTrash
                               className={styles.icon2}
                               onClick={() => handleDelete(item?._id, "slider")}
@@ -494,12 +585,15 @@ export default function Home() {
                             <td>{item?.postHeading}</td>
                             <td>
                               <a href={item?.postLink} target="_blank">
-                                View
+                                {item?.postLink}
                               </a>
                             </td>
                             <td>{item?.postContent}</td>
                             <td>
-                              <BiEdit className={styles.icon1} />
+                              <BiEdit
+                                className={styles.icon1}
+                                onClick={() => handlePostUpdate(item?._id)}
+                              />
                               <BiSolidTrash
                                 className={styles.icon2}
                                 onClick={() =>

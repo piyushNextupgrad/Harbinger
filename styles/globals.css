@@ -62,6 +62,12 @@
   width: 17%;
   border: 1px solid #fff;
 }
+.previewImage2 {
+  display: inline-block;
+  width: 120px;
+  height: 100px;
+  border: 1px solid #fff;
+}
 .alignInputandPreview {
   justify-content: flex-start;
   align-items: center;
