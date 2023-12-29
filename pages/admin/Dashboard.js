@@ -482,7 +482,7 @@ export default function Home() {
                           <td>{item?.keyName}</td>
                           <td>
                             <a href={item?.link} target="_blank">
-                              {item?.link}
+                              {item?.link ? "View" : null}
                             </a>
                           </td>
                           <td>
@@ -585,7 +585,7 @@ export default function Home() {
                             <td>{item?.postHeading}</td>
                             <td>
                               <a href={item?.postLink} target="_blank">
-                                {item?.postLink}
+                                {item?.postLink ? "View" : null}
                               </a>
                             </td>
                             <td>{item?.postContent}</td>

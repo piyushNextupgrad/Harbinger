@@ -13,20 +13,32 @@ const Sliderr = ({ sliderContent }) => {
     cssEase: "linear",
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1140,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
           dots: true,
+          slidesToScroll: 1,
+          initialSlide: 0,
+          autoplay: true,
+          speed: 1000,
+          autoplaySpeed: 2000,
+          cssEase: "linear",
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 840,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
+          slidesToScroll: 1,
+          initialSlide: 0,
+          autoplay: true,
+          speed: 1000,
+          autoplaySpeed: 2000,
+          cssEase: "linear",
         },
       },
       {
@@ -34,6 +46,12 @@ const Sliderr = ({ sliderContent }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          slidesToScroll: 1,
+          initialSlide: 0,
+          autoplay: true,
+          speed: 1000,
+          autoplaySpeed: 2000,
+          cssEase: "linear",
         },
       },
     ],
