@@ -521,10 +521,10 @@ export default function Home() {
                     />
                   </div>
                 </Form.Group>
-                <Form.Group className="mb-4" controlId="formTextSection1">
+                <Form.Group className="mb-2" controlId="formTextSection1">
                   <Form.Label>Key Name</Form.Label>
                   <Form.Control
-                    className="mb-5"
+                    className="mb-4"
                     type="text"
                     placeholder="Key Heading"
                     value={keyName}
@@ -532,10 +532,10 @@ export default function Home() {
                     required
                   />
                 </Form.Group>
-                <Form.Group className="mb-4" controlId="urlSection1">
+                <Form.Group className="mb-2" controlId="urlSection1">
                   <Form.Label>Link</Form.Label>
                   <Form.Control
-                    className="mb-5"
+                    className=""
                     type="text"
                     placeholder="Type Link"
                     value={link}
@@ -629,33 +629,28 @@ export default function Home() {
                     />
                   </div>
                 </Form.Group>
-                <Form.Group className="mb-2" controlId="formTextSec2">
+                <Form.Group className="mb-4" controlId="formTextSec2">
                   <Form.Label>Author Name</Form.Label>
                   <Form.Control
-                    className="mb-5"
-                    size="lg"
                     type="text"
                     placeholder="Author Name"
                     value={authorNameSec2}
                     onChange={(e) => setAuthorName(e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group className="mb-2" controlId="formTextSec2">
+                <Form.Group className="mb-4" controlId="formTextSec2">
                   <Form.Label>Article Heading</Form.Label>
                   <Form.Control
-                    className="mb-5"
-                    size="lg"
                     type="text"
                     placeholder="Article Heading"
                     value={articleHeadingSec2}
                     onChange={(e) => setArticleHeading(e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group className="mb-2" controlId="ControlTextarea1">
+                <Form.Group className="mb-4" controlId="ControlTextarea1">
                   <Form.Label>Article Content</Form.Label>
                   <br />
                   <Form.Control
-                    className="mb-5"
                     as="textarea"
                     rows={3}
                     placeholder="Article...."
@@ -666,7 +661,7 @@ export default function Home() {
                 <Form.Group className="mb-2" controlId="urlSec2">
                   <Form.Label>Read More URL</Form.Label>
                   <Form.Control
-                    className="mb-5"
+                    className="mb-3"
                     type="text"
                     placeholder="Type URL"
                     value={readMoreUrlSec2}
@@ -771,7 +766,6 @@ export default function Home() {
               <Form.Group className="mb-2" controlId="formHeadingTextSec4">
                 <Form.Label>Heading Text</Form.Label>
                 <Form.Control
-                  size="lg"
                   type="text"
                   placeholder="Community..."
                   value={headingText2}

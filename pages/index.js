@@ -3,10 +3,12 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
 //...................
 import Sliderr from "@/components/Slider";
 
 export default function Home() {
+  const [isSubmitingLoader, setisSubmitingLoader] = useState(false);
   const [sliderContent, setsliderContent] = useState([]);
   const [post, setpost] = useState([]);
   const [section3, setsection3] = useState({});
@@ -21,6 +23,7 @@ export default function Home() {
   }, [sliderContent]);
   async function getData() {
     try {
+      setisSubmitingLoader(true);
       const slider = await axios.get(
         "https://harbinger-backend.onrender.com/section1/getData"
       );
@@ -41,6 +44,7 @@ export default function Home() {
       );
       console.log("sec4", section4);
       setsection4(section4?.data?.data);
+      setisSubmitingLoader(false);
     } catch (err) {
       console.log(err);
     }
@@ -50,6 +54,21 @@ export default function Home() {
     <>
       <>
         <section className="sec1" id="demos">
+          {isSubmitingLoader ? (
+            <div className="overlay">
+              <div className="spinner-container">
+                <Spinner
+                  className="loaderSpinnerPiyush"
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    color: "#0a1c51fc",
+                  }}
+                  animation="border"
+                />
+              </div>
+            </div>
+          ) : null}
           <h1>HARBINGER KEY</h1>
           {sliderContent.length > 0 ? (
             <Sliderr sliderContent={sliderContent} />

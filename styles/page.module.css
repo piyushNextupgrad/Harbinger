@@ -18,7 +18,7 @@
   background-color: var(--col3);
   padding: 15px 15px;
   margin-bottom: 5px;
-  color: var(--col2);
+  color: #8b7b1c;
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -27,6 +27,12 @@
 .hdr h2 {
   font-size: 20px;
   font-weight: 800;
+}
+.hdr img {
+  transition: 0.4s;
+}
+.hdr img:hover {
+  transform: rotate(-0.05turn);
 }
 .main {
   position: relative;

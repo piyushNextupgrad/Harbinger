@@ -3,9 +3,11 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Spinner } from "react-bootstrap";
 import { toast } from "sonner";
 import { useRouter } from "next/router";
 const Login = () => {
+  const [isSubmitingLoader, setisSubmitingLoader] = useState(false);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const router = useRouter();
@@ -19,6 +21,7 @@ const Login = () => {
     e.preventDefault();
     if (email != "" && password != "") {
       try {
+        setisSubmitingLoader(true);
         const result = await axios.post(
           "https://harbinger-backend.onrender.com/user/api/findUser",
           { email: email, password: password }
@@ -34,9 +37,11 @@ const Login = () => {
           localStorage.setItem("user", user);
           router.push("/admin/Dashboard");
         } else {
+          setisSubmitingLoader(false);
           toast.error("Wrong username or password");
         }
       } catch (err) {
+        setisSubmitingLoader(false);
         console.log(err);
       }
     } else {
@@ -46,6 +51,21 @@ const Login = () => {
   return (
     <>
       <div className={styles.mainSection}>
+        {isSubmitingLoader ? (
+          <div className="overlay">
+            <div className="spinner-container">
+              <Spinner
+                className="loaderSpinnerPiyush"
+                style={{
+                  width: "100px",
+                  height: "100px",
+                  color: "#0a1c51fc",
+                }}
+                animation="border"
+              />
+            </div>
+          </div>
+        ) : null}
         <Form className={styles.loginForm} onSubmit={handleLogin}>
           <h3 className={styles.panelHeading}>HARBINGER ADMIN PANEL</h3>
           <Form.Group className="mb-3" controlId="formBasicEmail">
