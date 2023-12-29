@@ -54,21 +54,78 @@ export default function Home() {
     <>
       <>
         <section className="sec1" id="demos">
-          {isSubmitingLoader ? (
-            <div className="overlay">
-              <div className="spinner-container">
-                <Spinner
-                  className="loaderSpinnerPiyush"
+          {/* {isSubmitingLoader ? (
+            <div
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "rgba(255, 255, 255)", // White background with some transparency
+                zIndex: 9999,
+                transition: "opacity 1s ease-out", // Fade-out transition
+                opacity: isSubmitingLoader ? 1 : 0, // Adjust opacity based on isSubmitingLoader state
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100vh",
+                }}
+              >
+                <img
+                  src="/images/logo.png"
+                  alt="Rotating Image"
+                  className="img-rotation"
                   style={{
                     width: "100px",
                     height: "100px",
-                    color: "#0a1c51fc",
                   }}
-                  animation="border"
+                />
+              </div>
+            </div>
+          ) : null} */}
+          {isSubmitingLoader ? (
+            <div
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                zIndex: 9999,
+                transition: "opacity 1s ease-out",
+                opacity: isSubmitingLoader ? 1 : 0,
+                background: "url('/blurBack.jpg')", // Replace '/path/to/your/background-image.jpg' with the actual path to your background image
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100vh",
+                }}
+              >
+                <img
+                  src="/images/logo.png"
+                  alt="Rotating Image"
+                  className="img-rotation"
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    animation: "rotation 2s infinite linear", // Add a rotation animation
+                  }}
                 />
               </div>
             </div>
           ) : null}
+
           <h1>HARBINGER KEY</h1>
           {sliderContent.length > 0 ? (
             <Sliderr sliderContent={sliderContent} />

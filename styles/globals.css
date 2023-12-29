@@ -57,6 +57,17 @@
   border-radius: 8px;
 }
 
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.img-rotation {
+  animation: rotation 2s infinite linear; /* Adjust the duration (2s in this example) */
+}
 .previewImage {
   display: inline-block;
   width: 17%;
