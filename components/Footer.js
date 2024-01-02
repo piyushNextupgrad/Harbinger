@@ -46,6 +46,9 @@ const Footer = () => {
                 <a href="#" target="_blank">
                   API
                 </a>
+                <a href="#" target="_blank">
+                  Token
+                </a>
               </div>
               <div className="ftr2-2">
                 <strong>USEFUL LINKS</strong>
