@@ -16,7 +16,7 @@ const Header = () => {
             <span className="logoText">HARBINGER KEY</span>
           </Navbar.Brand>
           <Navbar.Toggle
-            className="bg-light"
+            className="bg-light shadow-none"
             aria-controls="basic-navbar-nav"
           />
           <Navbar.Collapse id="basic-navbar-nav">

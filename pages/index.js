@@ -126,7 +126,7 @@ export default function Home() {
             </div>
           ) : null}
 
-          <h1>HARBINGER KEY</h1>
+          <h1 className="sec1topHeading">HARBINGER KEY</h1>
           {sliderContent.length > 0 ? (
             <Sliderr sliderContent={sliderContent} />
           ) : null}
