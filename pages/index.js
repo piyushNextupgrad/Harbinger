@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 //...................
 import Sliderr from "@/components/Slider";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [isSubmitingLoader, setisSubmitingLoader] = useState(true);
@@ -13,6 +14,7 @@ export default function Home() {
   const [post, setpost] = useState([]);
   const [section3, setsection3] = useState({});
   const [section4, setsection4] = useState({});
+
   useEffect(() => {
     getData();
   }, []);
