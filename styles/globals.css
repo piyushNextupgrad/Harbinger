@@ -898,7 +898,7 @@ footer a {
 @media screen and (max-width: 640px) {
   .navbar-toggler-icon {
     font-size: 0.4em;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
   }
   .hd3 {
     width: 100%;
@@ -981,12 +981,13 @@ footer a {
     padding-right: 5px;
   }
   .sc2 {
-    margin: 20px 5px;
+    margin: 20px 15px;
   }
   .sec3,
   .sec4 {
-    padding: 60px 5px;
+    padding: 60px 15px;
   }
+
   footer {
     padding: 2rem 5px;
   }
