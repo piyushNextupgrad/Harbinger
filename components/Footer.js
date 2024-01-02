@@ -26,7 +26,11 @@ const Footer = () => {
             <div className="ftr2">
               <div className="ftr2-1">
                 <div className="ftr2-1-1">
-                  <img src="/logo.png" alt="logo" />
+                  <img
+                    className="BrandLogoHarbinger"
+                    src="/images/logo.png"
+                    alt="logo"
+                  />
                   <a href="#">
                     <h2>HARBINGER KEY</h2>
                   </a>

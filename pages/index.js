@@ -25,22 +25,22 @@ export default function Home() {
     try {
       // setisSubmitingLoader(true);
       const slider = await axios.get(
-        "https://harbinger-backend.onrender.com/section1/getData"
+        process.env.NEXT_PUBLIC_SITE_URL + "/section1/getData"
       );
 
       setsliderContent(slider?.data?.data);
       const articles = await axios.get(
-        "https://harbinger-backend.onrender.com/articles/api/getArticle"
+        process.env.NEXT_PUBLIC_SITE_URL + "/articles/api/getArticle"
       );
 
       setpost(articles?.data?.data);
       const section3 = await axios.get(
-        "https://harbinger-backend.onrender.com/section3/api/getSection3"
+        process.env.NEXT_PUBLIC_SITE_URL + "/section3/api/getSection3"
       );
 
       setsection3(section3?.data?.data);
       const section4 = await axios.get(
-        "https://harbinger-backend.onrender.com/section4/api/getSection4"
+        process.env.NEXT_PUBLIC_SITE_URL + "/section4/api/getSection4"
       );
       console.log("sec4", section4);
       setsection4(section4?.data?.data);
@@ -146,7 +146,7 @@ export default function Home() {
                     <div className="sec2-1-1">
                       <ul>
                         <li>
-                          <img src="/key-icon.png" />
+                          <img src="/images/logo.png" />
                         </li>
                         <li className="authorName">{item?.authorName}</li>
                         <li>{item?.updatedAt}</li>
