@@ -115,7 +115,6 @@ export default function Home() {
             >
               <img
                 src="/images/logo.png"
-                alt="Rotating Image"
                 className="img-rotation"
                 style={{
                   width: "100px",
