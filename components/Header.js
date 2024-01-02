@@ -1,54 +1,52 @@
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 const Header = () => {
   return (
     <>
-      <>
-        <div className="navbarr">
-          <div className="hd1">
-            <img src="/logo.png" />
-            <a href="#">
-              <h2>HARBINGER KEY</h2>
-            </a>
-          </div>
-          <div className="hd2">
-            <a href="javascript:void(0);" className="icon">
-              <img src="/open-menu.png" alt="" />
-            </a>
-            <ul id="myLinks">
-              <li>
-                <a
+      <Navbar id="customNavBar" expand="lg" className="navbarr">
+        <Container id="menuContainerCustomClass">
+          <Navbar.Brand className="hd1" href="/">
+            <img
+              className="BrandLogoHarbinger"
+              src="/images/logo.png"
+              alt="harbinger logo"
+            />
+            <span className="logoText">HARBINGER KEY</span>
+          </Navbar.Brand>
+          <Navbar.Toggle
+            className="bg-light"
+            aria-controls="basic-navbar-nav"
+          />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav id="navSubItem" className="me-auto">
+              <div className="navMenuItemsInner">
+                <Nav.Link
+                  className="actualLink"
                   href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
                   target="_blank"
                 >
                   DEVELOPERS
-                </a>
-              </li>
-              <li>
-                <a href="#comm">COMMUNITY</a>
-              </li>
-              <li>
-                <a
+                </Nav.Link>
+                <Nav.Link className="actualLink" href="#comm">
+                  COMMUNITY
+                </Nav.Link>
+                <Nav.Link
+                  id="actualLink"
                   href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
                   target="_blank"
                 >
                   WHITE PAPER
-                </a>
-              </li>
-              <li className="mbibutton">
-                {" "}
-                <a href="#" target="_blank">
-                  CONNECT WALLET
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="hd3">
-            <a href="#" target="_blank">
-              CONNECT WALLET
-            </a>
-          </div>
-          <div className="clear" />
-        </div>
-      </>
+                </Nav.Link>
+              </div>
+              <div className="hd3">
+                <Nav.Link>CONNECT WALLET</Nav.Link>
+              </div>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   );
 };

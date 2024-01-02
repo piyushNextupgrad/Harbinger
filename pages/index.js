@@ -8,7 +8,7 @@ import { Spinner } from "react-bootstrap";
 import Sliderr from "@/components/Slider";
 
 export default function Home() {
-  const [isSubmitingLoader, setisSubmitingLoader] = useState(false);
+  const [isSubmitingLoader, setisSubmitingLoader] = useState(true);
   const [sliderContent, setsliderContent] = useState([]);
   const [post, setpost] = useState([]);
   const [section3, setsection3] = useState({});
@@ -23,7 +23,7 @@ export default function Home() {
   }, [sliderContent]);
   async function getData() {
     try {
-      setisSubmitingLoader(true);
+      // setisSubmitingLoader(true);
       const slider = await axios.get(
         "https://harbinger-backend.onrender.com/section1/getData"
       );
@@ -195,7 +195,7 @@ export default function Home() {
           ? section3.map((item, index) => (
               <section key={index} className="sec3">
                 <div className="sec3-1">
-                  <p>{item.sectionName}</p>
+                  <p className="sec3-1-1">{item.sectionName}</p>
                   <h3>{item.sectionHeading}</h3>
                   <p>{item.sectionContent1}</p>
                   <p>{item.sectioncontent2}</p>
@@ -214,7 +214,7 @@ export default function Home() {
           ? section4.map((item, index) => (
               <section key={index} className="sec4" id="comm">
                 <div className="sec4-1">
-                  <p>{item?.sectionName}</p>
+                  <p className="sec3-1-1">{item?.sectionName}</p>
                   <h3>{item?.sectionHeading}</h3>
                   <p>{item?.sectionContent1}</p>
                   <p>{item?.sectionContent2}</p>

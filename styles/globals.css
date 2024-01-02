@@ -19,6 +19,19 @@
   padding: 0;
 }
 
+/*Slick Slider dots css*/
+.slick-dots li button::before {
+  font-size: 10px;
+  color: #fff;
+  opacity: 0.7;
+}
+
+.slick-dots li.slick-active button::before {
+  color: #fff;
+  opacity: 1;
+}
+
+/*......*/
 /* Scrollbar styles */
 ::-webkit-scrollbar {
   width: 12px;
@@ -55,6 +68,10 @@
   background-color: rgba(255, 255, 255, 0);
 
   border-radius: 8px;
+}
+
+.BrandLogoHarbinger {
+  animation: rotation 15s infinite linear;
 }
 
 @keyframes rotation {
@@ -114,7 +131,34 @@ a {
   color: white;
 }
 .sec1 {
+  position: relative;
   padding: 4rem 4em;
+}
+
+#customNavBar {
+  position: fixed !important;
+}
+
+#navSubItem {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.logoText {
+  color: #fff;
+  margin-left: 15px;
+}
+.navMenuItemsInner {
+  display: flex;
+  gap: 15px;
+}
+.navMenuItemsInner > * {
+  color: #fff !important;
+}
+#menuContainerCustomClass {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .navbarr {
   color: white !important;
@@ -151,7 +195,8 @@ a {
   vertical-align: middle;
 }
 .hd3 {
-  width: 20%;
+  color: #fff;
+
   display: inline-block;
   vertical-align: middle;
   text-align: center;
@@ -161,7 +206,7 @@ a {
   border: none;
   background-color: #21217a;
   text-decoration: none;
-  color: white;
+  color: #fff;
   border-radius: 25px;
   font-size: 14px;
   font-weight: 600;
@@ -170,6 +215,7 @@ a {
 }
 .hd3 a:hover {
   box-shadow: #21217a 0 0 16px 0;
+  color: #fff;
 }
 .hd1 h2 {
   color: white;
@@ -300,7 +346,7 @@ a.icon {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #1b2434;
-  padding-top: 30px;
+  padding-top: 60px;
   padding-bottom: 60px;
   padding-left: 30px;
   padding-right: 30px;
@@ -313,12 +359,13 @@ a.icon {
   font-size: 2.5rem;
   font-weight: 600;
   line-height: 100%;
-  margin-left: 20px;
+  margin: 20px;
 }
 .sc2 {
   display: block;
   margin: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
+  padding-top: 20px;
   overflow: auto;
   border-bottom: 1px solid #7c7c59;
 }
@@ -330,6 +377,7 @@ a.icon {
 }
 .sec2-2 {
   float: right;
+  padding-left: 20px;
 }
 .sec2-1 img {
   width: 24px;
@@ -371,7 +419,8 @@ a.icon {
   border: 2px solid #21217a;
   text-decoration: none;
   color: white;
-  margin: 0 11px;
+  /* margin: 0 11px; */
+  margin: 0;
   border-radius: 25px;
   font-family: Sora, sans-serif;
   font-size: 14px;
@@ -389,6 +438,7 @@ a.icon {
 }
 
 .sc3 a {
+  text-decoration: none;
   padding: 15px 30px 15px 30px;
   background-color: #21217a;
   border: none;
@@ -434,6 +484,7 @@ a.icon {
   line-height: 1.2;
 }
 .sc5-2 a {
+  text-decoration: none;
   padding: 15px 17px;
   background-color: #21217a;
   margin-top: 20px;
@@ -465,7 +516,10 @@ a.icon {
   color: white;
   padding: 60px 30px;
 }
-
+.sec3-1 .sec3-1-1,
+.sec4-1 .sec3-1-1 {
+  margin-bottom: 10px;
+}
 .sec4-1,
 .sec3-1 {
   background-color: rgb(26 31 46 / 86%);
@@ -481,7 +535,7 @@ a.icon {
   text-shadow: 0 0 16px #21217a;
   letter-spacing: -0.02em;
   margin-top: 0;
-  margin-bottom: 0;
+  /* margin-bottom: 10px; */
   font-size: 48px;
   line-height: 120%;
 }
@@ -491,6 +545,8 @@ a.icon {
   /* font-size: 1.125rem;*/
   font-weight: 100;
   line-height: 140%;
+  padding-top: 10px;
+  margin-bottom: 30px;
 }
 .sec3 a,
 .sec4 a {
@@ -564,10 +620,10 @@ footer a {
   display: inline-block;
   float: right;
   padding: 0;
-  margin: 20px 0 0 0;
+  /* margin: 20px 0 0 0; */
 }
 .ftr1-2 a {
-  padding: 16px 10px 7px 10px;
+  padding: 12px 12px 14px 12px;
   margin-right: 6px;
 }
 .ftr2-2 strong {
@@ -678,6 +734,28 @@ footer a {
     width: 38%;
   }
 }
+@media (max-width: 992px) {
+  .navMenuItemsInner {
+    margin-top: 10px;
+
+    flex-direction: column;
+  }
+  #actualLink {
+    margin-bottom: 1px dashed #fff !important;
+  }
+  .hd3 {
+    display: inline-block;
+    width: auto;
+  }
+  #navSubItem {
+    display: block;
+    float: left;
+  }
+  .hd3 {
+    margin-top: 15px;
+    margin-left: -10px;
+  }
+}
 @media screen and (max-width: 936px) {
   .navbarr {
     padding: 10px;
@@ -728,6 +806,8 @@ footer a {
   }
   .hd1 {
     width: 30%;
+    display: flex;
+    align-items: center;
   }
   .hd2 li {
     padding: 10px 3px;
@@ -755,10 +835,12 @@ footer a {
 
   .sec2-2 img {
     width: 100%;
+    margin-bottom: 20px;
   }
   .sec2-2 {
     float: NONE;
     text-align: center;
+    padding-left: 0;
   }
   .sc5 {
     display: block;
@@ -794,7 +876,6 @@ footer a {
   }
   .hd3 {
     margin-bottom: 0;
-    display: none;
   }
   .sc3 {
     margin-top: 20px;
