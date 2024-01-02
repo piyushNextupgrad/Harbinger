@@ -20,7 +20,11 @@ const Header2 = () => {
         <div className="navbarr2">
           <div className="headerSec1">
             <div>
-              <img src="/images/logo.png" alt="" />
+              <img
+                className="BrandLogoHarbinger"
+                src="/images/logo.png"
+                alt=""
+              />
               <h4>HARBINGER ADMIN PANEL</h4>
             </div>
             <div>
