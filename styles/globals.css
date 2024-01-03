@@ -691,7 +691,7 @@ footer a {
   /* padding-left: 20px;
     padding-right: 30px; */
   padding: 16px 30px;
-  background-color: rgba(0, 0, 0, 0.559);
+  background-color: rgba(0, 0, 0, 0.559) !important;
 
   top: 0;
   left: 0;
@@ -699,6 +699,7 @@ footer a {
   z-index: 99;
 }
 .headerSec1 {
+  margin-left: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -708,6 +709,9 @@ footer a {
   align-items: center;
 
   gap: 10px;
+}
+.headerSec1 h4 {
+  color: #fff;
 }
 .logOutbtn {
   font-family: Sora, sans-serif;
@@ -720,6 +724,27 @@ footer a {
   line-height: 1.5;
   border-radius: 10px;
 }
+.OffCanvasBodyBlur {
+  color: white !important;
+
+  backdrop-filter: blur(8px) !important;
+
+  background-color: rgb(0 0 0 / 16%) !important;
+}
+
+.OffCanvasLinks {
+  border-bottom: 1px dashed #fff !important;
+}
+.offCanvasLogo {
+  width: 30px;
+  margin-right: 14px;
+}
+
+.btn-close {
+  color: #fff !important;
+  background-color: #fff !important;
+}
+
 /**/
 @media screen and (max-width: 1024px) {
   .hd1 {
@@ -897,6 +922,12 @@ footer a {
 }
 
 @media screen and (max-width: 640px) {
+  .headerSec1 h4 {
+    font-size: 18px;
+  }
+  .headerSec1 img {
+    width: 55px;
+  }
   .navbar-toggler-icon {
     font-size: 0.4em;
     margin-bottom: 4px;
@@ -1033,6 +1064,18 @@ footer a {
   }
   #navSubItem {
     padding-left: 25px;
+  }
+}
+@media (max-width: 470px) {
+  .headerSec1 h4 {
+    font-size: 15px;
+  }
+  .headerSec1 img {
+    width: 40px;
+  }
+  .navbar-toggler-icon {
+    font-size: 0.3em;
+    margin-bottom: 4px;
   }
 }
 @media screen and (max-width: 376px) {

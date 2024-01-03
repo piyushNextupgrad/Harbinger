@@ -442,7 +442,7 @@ export default function Home() {
             </div>
           </div>
         ) : null}
-        <section className={styles.main}>
+        <section id="section1" className={styles.main}>
           <div className={styles.hdr}>
             <img src={"/images/logo.png"} />
             <h2>Section 1 - Key Slider</h2>
@@ -550,7 +550,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={styles.main}>
+        <section id="section2" className={styles.main}>
           <div className={styles.hdr}>
             <img src={"/images/logo.png"} />
             <h2>Section 2 - Posts and Articles</h2>
@@ -675,7 +675,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={`${styles.main} ${styles.main2}`}>
+        <section id="section3" className={`${styles.main} ${styles.main2}`}>
           <div className={styles.hdr}>
             <img src={"/images/logo.png"} />
             <h2>Section 3</h2>
@@ -743,7 +743,7 @@ export default function Home() {
             </Form>
           </div>
         </section>
-        <section className={`${styles.main} ${styles.main2}`}>
+        <section id="section4" className={`${styles.main} ${styles.main2}`}>
           <div className={styles.hdr}>
             <img src={"/images/logo.png"} />
             <h2>Section 4</h2>
