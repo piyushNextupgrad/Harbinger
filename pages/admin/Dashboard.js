@@ -509,7 +509,6 @@ export default function Home() {
                   <div className="alignInputandPreview">
                     <Form.Control
                       type="file"
-                      style={{ width: "70%" }}
                       ref={fileInputRef}
                       onChange={(e) => handleFileChange(e)}
                       required
@@ -614,7 +613,6 @@ export default function Home() {
                   <Form.Label>Upload Picture</Form.Label>
                   <div className="alignInputandPreview mb-5">
                     <Form.Control
-                      style={{ width: "70%" }}
                       ref={fileInputRef2}
                       type="file"
                       multiple

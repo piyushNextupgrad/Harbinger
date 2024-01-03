@@ -970,6 +970,9 @@ footer a {
 }
 
 @media screen and (max-width: 640px) {
+  .alignInputandPreview {
+    gap: 1rem;
+  }
   .hd1 {
     width: 73% !important;
   }
