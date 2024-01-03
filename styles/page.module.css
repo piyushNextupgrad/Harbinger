@@ -145,6 +145,12 @@
   }
 }
 @media (max-width: 750px) {
+  .container {
+    padding-right: 7px;
+    padding-left: 7px;
+    margin-right: auto;
+    margin-left: auto;
+  }
   .hdr {
     top: 0;
     left: 0;
@@ -184,6 +190,12 @@
   }
 }
 @media (max-width: 650px) {
+  .container {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+  }
   .hdr h2 {
     font-size: 14px;
     font-weight: 800;
@@ -192,6 +204,8 @@
     margin: 0;
     margin-bottom: 1rem;
     padding-bottom: 2rem;
+    padding-left: 13px;
+    padding-right: 13px;
   }
   .main2 {
     padding-bottom: 4rem;
