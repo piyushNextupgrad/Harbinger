@@ -1007,6 +1007,12 @@ footer a {
     padding: 0;
     font-weight: 300;
   }
+  .previewImage {
+    display: inline-block;
+    width: 100px;
+    height: auto;
+    border: 1px solid #fff;
+  }
 }
 @media screen and (max-width: 600px) {
   .item {

@@ -48,6 +48,10 @@ const Login = () => {
       toast.warning("Both email and password are required to login.");
     }
   }
+  function resetForm() {
+    setemail("");
+    setpassword("");
+  }
   return (
     <>
       <div className={styles.mainSection}>
@@ -69,22 +73,21 @@ const Login = () => {
         <Form className={styles.loginForm} onSubmit={handleLogin}>
           <h3 className={styles.panelHeading}>HARBINGER ADMIN PANEL</h3>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label className={styles.label}>Email address</Form.Label>
             <Form.Control
+              className={styles.input}
               type="email"
               value={email}
               placeholder="Enter email"
               required
               onChange={(e) => setemail(e?.target?.value)}
             />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label className={styles.label}>Password</Form.Label>
             <Form.Control
+              className={styles.input}
               type="password"
               value={password}
               placeholder="Password"
@@ -93,10 +96,18 @@ const Login = () => {
             />
           </Form.Group>
 
-          <Button variant="secondary" type="submit">
+          <Button
+            className="btn-sm btn-shrink"
+            variant="secondary"
+            type="submit"
+          >
             Submit
           </Button>
-          <Button className="mx-4" variant="secondary" type="reset">
+          <Button
+            className="mx-4 btn-sm  btn-shrink"
+            variant="secondary"
+            onClick={resetForm}
+          >
             Reset
           </Button>
         </Form>

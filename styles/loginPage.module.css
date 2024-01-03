@@ -24,3 +24,23 @@
   text-shadow: 0 0 16px #21217a;
   color: white;
 }
+@media (max-width: 768px) {
+  .loginForm {
+    padding: 4rem 2rem 4rem 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    background-color: rgba(26, 31, 46, 0.568);
+    box-shadow: #21217afe 0 0 16px 0;
+    border: 2px solid #21217ab8;
+    color: #fff;
+  }
+  .panelHeading {
+    font-size: 16px;
+  }
+  .label {
+    font-size: 13px;
+  }
+  .input::placeholder {
+    font-size: 10px;
+  }
+}

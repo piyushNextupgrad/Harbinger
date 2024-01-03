@@ -675,7 +675,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={styles.main}>
+        <section className={`${styles.main} ${styles.main2}`}>
           <div className={styles.hdr}>
             <img src={"/images/logo.png"} />
             <h2>Section 3</h2>
@@ -743,7 +743,7 @@ export default function Home() {
             </Form>
           </div>
         </section>
-        <section className={styles.main}>
+        <section className={`${styles.main} ${styles.main2}`}>
           <div className={styles.hdr}>
             <img src={"/images/logo.png"} />
             <h2>Section 4</h2>
@@ -795,7 +795,11 @@ export default function Home() {
                 />
               </Form.Group>
 
-              <Button variant="primary" type="submit" className={styles.fbtn}>
+              <Button
+                variant="primary"
+                type="submit"
+                className={`${styles.fbtn} mb-4`}
+              >
                 Update Site
               </Button>
             </Form>

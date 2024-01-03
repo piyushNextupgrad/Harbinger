@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Layout>
-        <Toaster position="bottom-right" />
+        <Toaster richColors position="bottom-right" />
         <Component {...pageProps} />
       </Layout>
     </>
