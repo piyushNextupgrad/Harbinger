@@ -71,7 +71,7 @@ const Header2 = () => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link className="OffCanvasLinks" href="#section1">
+                  {/* <Nav.Link className="OffCanvasLinks" href="#section1">
                     Section 1
                   </Nav.Link>
                   <Nav.Link className="OffCanvasLinks" href="#section2">
@@ -82,7 +82,7 @@ const Header2 = () => {
                   </Nav.Link>
                   <Nav.Link className="OffCanvasLinks" href="#section4">
                     Section 4
-                  </Nav.Link>
+                  </Nav.Link> */}
                   <button className="my-4 logOutbtn" onClick={handleLogout}>
                     Logout
                   </button>
