@@ -52,6 +52,12 @@
   background: #268d96;
 }
 /*-----*/
+p {
+  line-height: 160% !important;
+  font-size: 1rem !important;
+  color: #fff;
+  font-weight: 300 !important;
+}
 .overlay {
   position: fixed;
   top: 0;
@@ -410,13 +416,13 @@ a.icon {
   text-decoration: none;
 }
 .sec2-1-2 p {
-  color: #ececec;
+  color: #fff;
   letter-spacing: -0.02em;
   margin-bottom: 35px;
   font-family: Sora, sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 300;
-  line-height: 120%;
+  line-height: 160%;
   display: block;
 }
 .sec2-1-2 a {
@@ -484,7 +490,7 @@ a.icon {
   text-align: left;
   text-shadow: 0 0 16px #21217a;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   font-family: Sora, sans-serif;
   font-size: 48px;
   line-height: 1.2;
