@@ -937,6 +937,17 @@ footer a {
   .card1 img {
     width: 40px;
   }
+  .crd h2 {
+    font-size: 15px;
+  }
+  .cardd a {
+    padding: 8px 15px 8px 15px;
+
+    font-size: 12px;
+
+    text-align: center;
+    text-transform: uppercase;
+  }
 }
 
 @media screen and (max-width: 640px) {
