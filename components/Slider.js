@@ -54,19 +54,6 @@ const Sliderr = ({ sliderContent }) => {
           cssEase: "linear",
         },
       },
-      {
-        breakpoint: 468,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          slidesToScroll: 1,
-          initialSlide: 0,
-          autoplay: true,
-          speed: 2000,
-          autoplaySpeed: 3000,
-          cssEase: "linear",
-        },
-      },
     ],
   };
   return (
