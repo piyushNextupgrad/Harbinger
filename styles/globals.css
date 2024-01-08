@@ -929,6 +929,16 @@ footer a {
   }
 }
 
+@media (max-width: 650px) {
+  .slick-prev,
+  .slick-next {
+    display: none !important;
+  }
+  .card1 img {
+    width: 40px;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .headerSec1 h4 {
     font-size: 18px;
