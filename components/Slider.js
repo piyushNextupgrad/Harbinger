@@ -44,6 +44,19 @@ const Sliderr = ({ sliderContent }) => {
       {
         breakpoint: 650,
         settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          slidesToScroll: 1,
+          initialSlide: 0,
+          autoplay: true,
+          speed: 2000,
+          autoplaySpeed: 3000,
+          cssEase: "linear",
+        },
+      },
+      {
+        breakpoint: 468,
+        settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
           slidesToScroll: 1,
