@@ -29,6 +29,7 @@
   font-weight: 800;
 }
 .hdr img {
+  width: 60px;
   transition: 0.4s;
 }
 .hdr img:hover {

@@ -30,7 +30,7 @@ const Header2 = () => {
               <div className="headerSec1">
                 <div>
                   <img
-                    className="BrandLogoHarbinger"
+                    className="BrandLogoHarbinger widthcontrol"
                     src="/images/logo.png"
                     alt=""
                   />
