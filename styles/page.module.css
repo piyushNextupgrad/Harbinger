@@ -190,6 +190,12 @@
   }
 }
 @media (max-width: 650px) {
+  .mainSection {
+    margin-top: -6.8%;
+    padding: 8rem 0.7rem 1rem 0.7rem;
+    font-family: "Sora", sans-serif;
+    background-image: url("/images/comm.jpg");
+  }
   .container {
     padding-right: 0px;
     padding-left: 0px;
