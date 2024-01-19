@@ -693,6 +693,7 @@ export default function Home() {
                       type="file"
                       multiple
                       onChange={handleFileChange2}
+                      required
                     />
                     <div className="fiximage">
                       <img
@@ -712,6 +713,7 @@ export default function Home() {
                     placeholder="Author Name"
                     value={authorNameSec2}
                     onChange={(e) => setAuthorName(e.target.value)}
+                    required
                   />
                 </Form.Group>
                 <Form.Group className="mb-4" controlId="formTextSec2">
@@ -721,6 +723,7 @@ export default function Home() {
                     placeholder="Article Heading"
                     value={articleHeadingSec2}
                     onChange={(e) => setArticleHeading(e.target.value)}
+                    required
                   />
                 </Form.Group>
                 <Form.Group className="mb-4" controlId="ControlTextarea1">
