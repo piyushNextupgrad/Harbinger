@@ -20,6 +20,12 @@
 }
 
 /*Slick Slider dots css*/
+.slick-slide img {
+  display: block !important;
+  width: auto !important;
+  margin: 0 auto !important;
+  max-width: 100% !important;
+}
 .slick-dots li button::before {
   font-size: 10px;
   color: #fff;
@@ -310,6 +316,7 @@ a.icon {
   line-height: 1.2;
 }
 .cardd {
+  overflow: hidden;
   text-align: center;
   background-color: #1a1f2eeb;
   border: 1px solid #21217a;
@@ -338,8 +345,11 @@ a.icon {
 .card2,
 .card3,
 .card4 {
+  width: 344px;
+  height: 391px;
+  overflow: hidden !important;
   background-size: cover;
-  border-radius: 25px 25px 0px 0px;
+  border-radius: 25px 25px 0 0;
   padding: 60px;
   align-items: center;
   text-align: center;

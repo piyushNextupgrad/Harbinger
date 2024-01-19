@@ -4,7 +4,7 @@ const Sliderr = ({ sliderContent }) => {
     dots: true,
     infinite: true,
 
-    slidesToShow: 4,
+    slidesToShow: sliderContent.length > 4 ? 4 : sliderContent.length,
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
@@ -16,10 +16,10 @@ const Sliderr = ({ sliderContent }) => {
         breakpoint: 1140,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
-          slidesToScroll: 1,
+
           initialSlide: 0,
           autoplay: true,
           speed: 2000,
@@ -31,8 +31,8 @@ const Sliderr = ({ sliderContent }) => {
         breakpoint: 840,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToScroll: 1,
+
           slidesToScroll: 1,
           initialSlide: 0,
           autoplay: true,
@@ -46,7 +46,7 @@ const Sliderr = ({ sliderContent }) => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          slidesToScroll: 1,
+
           initialSlide: 0,
           autoplay: true,
           speed: 2000,
