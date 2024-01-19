@@ -424,7 +424,7 @@ a.icon {
   width: 227.3px;
   height: 256px;
   border-radius: 2px;
-  box-shadow: #21217a 0 0 16px 0;
+  /* box-shadow: #21217a 0 0 16px 0; */
 }
 .sec2-1-2 {
   margin-bottom: 20px;
