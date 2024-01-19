@@ -114,7 +114,13 @@
   color: var(--col1);
 }
 .tablePic {
-  width: 3rem;
+  /* width: 100px;
+  height: 100px; */
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  max-width: 100%;
 }
 @media (max-width: 1024px) {
   .tbl {

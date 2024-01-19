@@ -542,10 +542,12 @@ export default function Home() {
                         <tr key={item?._id}>
                           <td>{index + 1}</td>
                           <td>
-                            <img
-                              className={styles?.tablePic}
-                              src={item?.imagePath}
-                            />
+                            <div className="fiximage2">
+                              <img
+                                className={styles?.tablePic}
+                                src={item?.imagePath}
+                              />
+                            </div>
                           </td>
                           <td>{item?.keyName}</td>
                           <td>
@@ -648,10 +650,12 @@ export default function Home() {
                             <td>{index + 1}</td>
                             <td>{item?.authorName}</td>
                             <td>
-                              <img
-                                className={styles?.tablePic}
-                                src={item?.postMedia}
-                              />
+                              <div className="fiximage2">
+                                <img
+                                  className={styles?.tablePic}
+                                  src={item?.postMedia}
+                                />
+                              </div>
                             </td>
                             <td>{item?.postHeading}</td>
                             <td>
