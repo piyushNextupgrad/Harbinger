@@ -10,6 +10,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import Modal1 from "@/components/SliderModal";
 import Modal2 from "@/components/section2Modal";
+import Swal from "sweetalert2";
 
 export default function Home() {
   const [isSubmitingLoader, setisSubmitingLoader] = useState(false);
@@ -149,48 +150,115 @@ export default function Home() {
     }
   }
 
-  //function for delete API
-  async function handleDelete(id, sectionName) {
-    // console.log(id);
-    if (sectionName == "slider") {
-      setisSubmitingLoader(true);
-      const formData = new FormData();
-      formData.append("id", id);
-      const result = await axios.post(
-        "https://harbinger-backend.onrender.com/section1/delData",
-        formData
-      );
-      // console.log(result);
-      if (result.data.success) {
-        setisSubmitingLoader(false);
-        const filteredSlider = sliderContent.filter((item) => item._id != id);
-        setsliderContent(filteredSlider);
-        toast.success("Record Deleted");
-      } else {
-        toast.error("Record Not Deleted");
-      }
-    }
-    if (sectionName == "PostSection") {
-      setisSubmitingLoader(true);
-      const formData = new FormData();
-      formData.append("id", id);
+  //function for delete API code without Sweet Alert
+  // async function handleDelete(id, sectionName) {
+  //   // console.log(id);
+  //   if (sectionName == "slider") {
+  //     setisSubmitingLoader(true);
+  //     const formData = new FormData();
+  //     formData.append("id", id);
+  //     const result = await axios.post(
+  //       "https://harbinger-backend.onrender.com/section1/delData",
+  //       formData
+  //     );
+  //     // console.log(result);
+  //     if (result.data.success) {
+  //       setisSubmitingLoader(false);
+  //       const filteredSlider = sliderContent.filter((item) => item._id != id);
+  //       setsliderContent(filteredSlider);
+  //       toast.success("Record Deleted");
+  //     } else {
+  //       toast.error("Record Not Deleted");
+  //     }
+  //   }
+  //   if (sectionName == "PostSection") {
+  //     setisSubmitingLoader(true);
+  //     const formData = new FormData();
+  //     formData.append("id", id);
 
-      const result = await axios.post(
-        "https://harbinger-backend.onrender.com/articles/api/delArticle",
-        formData
-      );
-      // console.log(result);
-      if (result.data.success) {
-        const filteredPost = post.filter((item) => item._id != id);
-        setpost(filteredPost);
-        setisSubmitingLoader(false);
-        toast.success("Record Deleted");
-      } else {
-        setisSubmitingLoader(false);
-        toast.error("Record Not Deleted");
+  //     const result = await axios.post(
+  //       "https://harbinger-backend.onrender.com/articles/api/delArticle",
+  //       formData
+  //     );
+  //     // console.log(result);
+  //     if (result.data.success) {
+  //       const filteredPost = post.filter((item) => item._id != id);
+  //       setpost(filteredPost);
+  //       setisSubmitingLoader(false);
+  //       toast.success("Record Deleted");
+  //     } else {
+  //       setisSubmitingLoader(false);
+  //       toast.error("Record Not Deleted");
+  //     }
+  //   }
+  // }
+
+  //functions for delete api with SWEET ALERT
+
+  async function handleDelete(id, sectionName) {
+    const confirmResult = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#427bff",
+      cancelButtonColor: "#6c757d",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (confirmResult.isConfirmed) {
+      if (sectionName === "slider") {
+        setisSubmitingLoader(true);
+        const formData = new FormData();
+        formData.append("id", id);
+        try {
+          const result = await axios.post(
+            "https://harbinger-backend.onrender.com/section1/delData",
+            formData
+          );
+          if (result.data.success) {
+            setisSubmitingLoader(false);
+            const filteredSlider = sliderContent.filter(
+              (item) => item._id !== id
+            );
+            setsliderContent(filteredSlider);
+            toast.success("Record Deleted");
+          } else {
+            toast.error("Record Not Deleted");
+          }
+        } catch (error) {
+          console.error("Error deleting slider:", error);
+          toast.error("An error occurred while deleting the record");
+        }
+      }
+
+      if (sectionName === "PostSection") {
+        setisSubmitingLoader(true);
+        const formData = new FormData();
+        formData.append("id", id);
+
+        try {
+          const result = await axios.post(
+            "https://harbinger-backend.onrender.com/articles/api/delArticle",
+            formData
+          );
+          if (result.data.success) {
+            const filteredPost = post.filter((item) => item._id !== id);
+            setpost(filteredPost);
+            setisSubmitingLoader(false);
+            toast.success("Record Deleted");
+          } else {
+            setisSubmitingLoader(false);
+            toast.error("Record Not Deleted");
+          }
+        } catch (error) {
+          console.error("Error deleting post:", error);
+          toast.error("An error occurred while deleting the record");
+        }
       }
     }
   }
+
   //function for post API
   async function sendData(event, section) {
     event.preventDefault();
@@ -513,11 +581,15 @@ export default function Home() {
                       onChange={(e) => handleFileChange(e)}
                       required
                     />
-                    <img
-                      className="previewImage"
-                      src={previewImage == null ? "/no-img.jpg" : previewImage}
-                      alt=""
-                    />
+                    <div className="fiximage">
+                      <img
+                        className="previewImage"
+                        src={
+                          previewImage == null ? "/no-img.jpg" : previewImage
+                        }
+                        alt=""
+                      />
+                    </div>
                   </div>
                 </Form.Group>
                 <Form.Group className="mb-2" controlId="formTextSection1">
@@ -618,13 +690,15 @@ export default function Home() {
                       multiple
                       onChange={handleFileChange2}
                     />
-                    <img
-                      className="previewImage"
-                      src={
-                        previewImage2 == null ? "/no-img.jpg" : previewImage2
-                      }
-                      alt=""
-                    />
+                    <div className="fiximage">
+                      <img
+                        className="previewImage"
+                        src={
+                          previewImage2 == null ? "/no-img.jpg" : previewImage2
+                        }
+                        alt=""
+                      />
+                    </div>
                   </div>
                 </Form.Group>
                 <Form.Group className="mb-4" controlId="formTextSec2">

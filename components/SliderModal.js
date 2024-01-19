@@ -130,11 +130,13 @@ const Modal1 = ({
                   style={{ width: "60%" }}
                   onChange={(e) => handleFileChange(e)}
                 />
-                <img
-                  className="previewImage2"
-                  src={imagePreview == null ? field1 : imagePreview}
-                  alt=""
-                />
+                <div className="fiximage">
+                  <img
+                    className="previewImage2"
+                    src={imagePreview == null ? field1 : imagePreview}
+                    alt=""
+                  />
+                </div>
               </div>
             </Form.Group>
             <Form.Group className="mb-2" controlId="formTextSection1">
