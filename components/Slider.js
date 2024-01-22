@@ -15,7 +15,7 @@ const Sliderr = ({ sliderContent }) => {
       {
         breakpoint: 1140,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: sliderContent.length > 3 ? 3 : sliderContent.length,
           slidesToScroll: 1,
           infinite: true,
           dots: true,
@@ -30,7 +30,7 @@ const Sliderr = ({ sliderContent }) => {
       {
         breakpoint: 840,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: sliderContent.length > 2 ? 2 : sliderContent.length,
           slidesToScroll: 1,
 
           slidesToScroll: 1,
@@ -44,7 +44,7 @@ const Sliderr = ({ sliderContent }) => {
       {
         breakpoint: 650,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: sliderContent.length > 2 ? 1 : sliderContent.length,
           slidesToScroll: 1,
 
           initialSlide: 0,
@@ -63,8 +63,12 @@ const Sliderr = ({ sliderContent }) => {
           ? sliderContent.map((item, index) => (
               <div key={index} className="item">
                 <div className="cardd">
-                  <div className="card1">
-                    <img src={item?.imagePath} alt="card1" />
+                  <div className="cardfullwidth">
+                    <img
+                      className="keyImage"
+                      src={item?.imagePath}
+                      alt="card1"
+                    />
                   </div>
                   <div className="crd">
                     <h2>{item?.keyName}</h2>
