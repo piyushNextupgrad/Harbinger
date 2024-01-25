@@ -968,16 +968,20 @@ footer a {
   }
 }
 
-@media (max-width: 650px) {
-  .slick-prev,
+@media screen and (max-width: 650px) {
+  /* .slick-prev,
   .slick-next {
     display: none !important;
-  }
+  } */
   .card1 img {
     width: 40px;
   }
-  .keyImage {
-    width: 40px;
+
+  .slick-slide img {
+    width: 100px !important;
+  }
+  .cardfullwidth {
+    padding-top: 100px;
   }
 
   .crd h2 {
@@ -1133,6 +1137,19 @@ footer a {
   }
   #navSubItem {
     padding-left: 25px;
+  }
+}
+@media (max-width: 490px) {
+  .slick-slide img {
+    width: 55px !important;
+  }
+  .keyImage {
+    margin: 0 !important;
+  }
+  .cardfullwidth {
+    padding: 0;
+    padding-top: 35px;
+    height: 200px;
   }
 }
 @media (max-width: 470px) {

@@ -5,12 +5,13 @@ const Sliderr = ({ sliderContent }) => {
     infinite: true,
 
     slidesToShow: sliderContent.length > 4 ? 4 : sliderContent.length,
+
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 3000,
-    cssEase: "linear",
+
     responsive: [
       {
         breakpoint: 1140,
@@ -24,7 +25,6 @@ const Sliderr = ({ sliderContent }) => {
           autoplay: true,
           speed: 2000,
           autoplaySpeed: 3000,
-          cssEase: "linear",
         },
       },
       {
@@ -32,26 +32,26 @@ const Sliderr = ({ sliderContent }) => {
         settings: {
           slidesToShow: sliderContent.length > 2 ? 2 : sliderContent.length,
           slidesToScroll: 1,
+          dots: true,
 
           slidesToScroll: 1,
           initialSlide: 0,
           autoplay: true,
           speed: 2000,
           autoplaySpeed: 3000,
-          cssEase: "linear",
         },
       },
       {
         breakpoint: 650,
         settings: {
-          slidesToShow: sliderContent.length > 2 ? 1 : sliderContent.length,
+          slidesToShow: sliderContent.length > 2 ? 2 : sliderContent.length,
           slidesToScroll: 1,
+          dots: true,
 
           initialSlide: 0,
           autoplay: true,
           speed: 2000,
           autoplaySpeed: 3000,
-          cssEase: "linear",
         },
       },
     ],
